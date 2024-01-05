@@ -1,0 +1,13 @@
+﻿@model DateTime
+
+<form asp-action="FechamentoCaixa" method="post">
+    <div class="form-group">
+        <label for="DataSel">Qual data gostaria de ver o fechamento do caixa?</label>
+        <input for="dataSel" type="date" class="form-control" />
+    </div>
+    <button type="submit">Exibir Vendas</button>
+</form>
+
+<div id="fechamentoContainer">
+
+</div>

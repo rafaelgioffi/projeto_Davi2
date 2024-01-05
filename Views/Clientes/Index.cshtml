@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjetoFinal.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Clientes</h1>
+
+<p class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i> Adicionar</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+            <th colspan="2">
+                Local
+            </th>            
+
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @* @Html.DisplayFor(modelItem => item.CPF) *@
+                    @item.MostrarCPF()
+                </td>
+                <td colspan="2">
+                    @* @Html.DisplayFor(modelItem => item.CPF) *@
+                    @item.Cidade / @item.Estado
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ClienteID" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.ClienteID" class="btn btn-info"><i class="bi bi-info-circle-fill"></i> Info</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ClienteID" class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

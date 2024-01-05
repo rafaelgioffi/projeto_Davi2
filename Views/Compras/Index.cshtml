@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ProjetoFinal.Models.Compra>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Compras</h1>
+<nav class="navbar navbar-nav">
+    <form asp-action="Compras" asp-action="FechamentoCaixa" method="post">
+        <div class="form-group">
+            <label for="DataSel">Qual data gostaria de ver o fechamento do caixa?</label>
+            <input for="dataSel" type="date" class="form-control" />
+        </div>
+        <button type="submit">Exibir Vendas</button>
+    </form>
+    @if (Model.Any())
+    {        
+    Html.RenderPartial("_fechamentoDia", ViewData.TemplateInfo.FormattedModelValue());
+    }
+</nav>
+<p class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a asp-action="Create" class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Adicionar</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FormaPagamento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FormaPagamento)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CompraID" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.CompraID" class="btn btn-info"><i class="bi bi-info-circle-fill"></i> Info</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CompraID" class="btn btn-danger"><i class="bi bi-trash3-fill"></i> Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model List<ProjetoFinal.Models.Compra>
+
+<h3>Vendas</h3>
+@if (Model.Any())
+{    
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Data</th>
+            <th>Forma de Pagamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.CompraID</td>
+                <td>@v.DataCompra</td>
+                <td>@v.FormaPagamento</td>
+            </tr>
+        }
+    </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhuma compra realizada na data selecionada.</p>
+}
