@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjetoFinal.Models;
+using System.Data;
 
 namespace ProjetoFinal.Controllers
 {
@@ -28,8 +29,11 @@ namespace ProjetoFinal.Controllers
         [HttpPost]
         public IActionResult FechamentoCaixa(DateTime dataSel)
         {
-            var fechamento = _contexto.Compras.Where(c => c.DataCompra.Date == dataSel.Date).ToList();
-            return PartialView("_fechamentoDia", fechamento);
+            var fechamento = _contexto.Compras
+                .Where(c => c.DataCompra.Date == dataSel.Date)
+                .Include(p => p.Produto)
+                .ToList();
+            return View(fechamento);
         }
 
         // GET: Compras/Details/5

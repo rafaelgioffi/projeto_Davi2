@@ -54,10 +54,6 @@ namespace ProjetoFinal
                 name: "default",
                 pattern: "{controller=Clientes}/{action=Index}/{id?}");
 
-            app.MapControllerRoute(
-                name: "FechamentoCaixa",
-                pattern: "{controller=Compra}/{action=FechamentoCaixa}/{date?}");
-
             app.Run();
         }
     }

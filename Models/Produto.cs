@@ -16,5 +16,6 @@ namespace ProjetoFinal.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Preço")]
         public decimal PrecoUnit { get; set; }
+
     }
 }

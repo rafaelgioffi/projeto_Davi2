@@ -5,38 +5,30 @@
 }
 
 <h1>Lista de Compras</h1>
-<nav class="navbar navbar-nav">
-    <form asp-action="Compras" asp-action="FechamentoCaixa" method="post">
-        <div class="form-group">
-            <label for="DataSel">Qual data gostaria de ver o fechamento do caixa?</label>
-            <input for="dataSel" type="date" class="form-control" />
-        </div>
-        <button type="submit">Exibir Vendas</button>
-    </form>
-    @if (Model.Any())
-    {        
-    Html.RenderPartial("_fechamentoDia", ViewData.TemplateInfo.FormattedModelValue());
-    }
-</nav>
+
 <p class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a asp-action="Create" class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Adicionar</a>
+    <form asp-action="FechamentoCaixa" method="post">
+    <button type="submit" class="btn btn-success"><i class="bi bi-cash-coin"></i> Fechamento de Caixa</button>
+    </form>
 </p>
+
 <table class="table table-striped">
     <thead class="table-dark">
         <tr>
-            <th>
+            <th class="col-md-1">
                 @Html.DisplayNameFor(model => model.DataCompra)
             </th>
-            <th>
+            <th class="col-md-2">
                 @Html.DisplayNameFor(model => model.Cliente)
             </th>
-            <th>
+            <th class="col-md-4">
                 @Html.DisplayNameFor(model => model.Produto)
             </th>
-            <th>
+            <th class="col-md-1">
                 @Html.DisplayNameFor(model => model.FormaPagamento)
             </th>
-            <th></th>
+            <th class="col-md-4"></th>
         </tr>
     </thead>
     <tbody>

@@ -1,13 +1,40 @@
-﻿@model DateTime
+﻿@model List<ProjetoFinal.Models.Compra>
 
-<form asp-action="FechamentoCaixa" method="post">
-    <div class="form-group">
-        <label for="DataSel">Qual data gostaria de ver o fechamento do caixa?</label>
-        <input for="dataSel" type="date" class="form-control" />
+<form asp-action="FechamentoCaixa" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+    <div class="col-12">
+        <div class="input-group">
+            <label for="DataSel" class="control-label">Qual data gostaria de ver o fechamento do caixa? </label>
+            <input id="dataSel" name="dataSel" type="date" class="form-control" />
+        </div>
     </div>
-    <button type="submit">Exibir Vendas</button>
+    <button type="submit" class="col-md-2 btn btn-success">Exibir Vendas</button>
 </form>
 
-<div id="fechamentoContainer">
-
-</div>
+@if (Model != null && Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Forma de Pagamento</th>
+                <th>Valor Unitário</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model)
+            {
+                <tr>
+                    <td>@v.CompraID</td>
+                    <td>@v.DataCompra.ToShortDateString()</td>
+                    <td>@v.FormaPagamento</td>
+                    <td>@v.Produto.PrecoUnit</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="col-12">Nenhuma compra realizada na data selecionada.</p>
+}
