@@ -8,10 +8,11 @@
 
 <p class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a asp-action="Create" class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Adicionar</a>
+</p>
     <form asp-action="FechamentoCaixa" method="post">
+        <input id="dataSel" name="dataSel" type="date" class="form-control col-md-2" />
     <button type="submit" class="btn btn-success"><i class="bi bi-cash-coin"></i> Fechamento de Caixa</button>
     </form>
-</p>
 
 <table class="table table-striped">
     <thead class="table-dark">

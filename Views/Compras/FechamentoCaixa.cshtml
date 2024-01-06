@@ -1,6 +1,6 @@
 ﻿@model List<ProjetoFinal.Models.Compra>
 
-<form asp-action="FechamentoCaixa" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+@* <form asp-action="FechamentoCaixa" method="post" class="row row-cols-lg-auto g-3 align-items-center">
     <div class="col-12">
         <div class="input-group">
             <label for="DataSel" class="control-label">Qual data gostaria de ver o fechamento do caixa? </label>
@@ -8,27 +8,29 @@
         </div>
     </div>
     <button type="submit" class="col-md-2 btn btn-success">Exibir Vendas</button>
-</form>
+</form> *@
 
 @if (Model != null && Model.Any())
 {
+    <h3>Vendas realizadas no dia </h3>
+    <hr />
     <table>
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Data</th>
-                <th>Forma de Pagamento</th>
-                <th>Valor Unitário</th>
+                <th class="col-md-1 text-center">Código</th>
+                <th class="col-md-2 text-center">Data</th>
+                <th class="col-md-2 text-center">Forma de Pagamento</th>
+                <th class="col-md-2 text-center">Valor Unitário</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var v in Model)
             {
                 <tr>
-                    <td>@v.CompraID</td>
-                    <td>@v.DataCompra.ToShortDateString()</td>
-                    <td>@v.FormaPagamento</td>
-                    <td>@v.Produto.PrecoUnit</td>
+                    <td class="text-center">@v.CompraID</td>
+                    <td class="text-center">@v.DataCompra</td>
+                    <td class="text-center">@v.FormaPagamento</td>
+                    <td class="text-center">@v.Produto.PrecoUnit</td>
                 </tr>
             }
         </tbody>
@@ -36,5 +38,6 @@
 }
 else
 {
-    <p class="col-12">Nenhuma compra realizada na data selecionada.</p>
+    <h2 class="col-12">Nenhuma compra realizada na data selecionada.</h2>
 }
+<a asp-controller="Compras" asp-action="Index" type="button" class="btn btn-primary m-2">Voltar</a>
