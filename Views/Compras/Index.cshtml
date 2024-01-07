@@ -9,9 +9,16 @@
 <p class="d-grid gap-2 d-md-flex justify-content-md-end">
     <a asp-action="Create" class="btn btn-primary"><i class="bi bi-cart-plus-fill"></i> Adicionar</a>
 </p>
-    <form asp-action="FechamentoCaixa" method="post">
-        <input id="dataSel" name="dataSel" type="date" class="form-control col-md-2" />
-    <button type="submit" class="btn btn-success"><i class="bi bi-cash-coin"></i> Fechamento de Caixa</button>
+<form asp-action="FechamentoCaixa" method="post" class="row row-cols-lg-auto g-3 align-items-center">
+    <div class="col-2">
+        <label for="dataSel">Qual data do fechamento?</label>
+        <div class="input-group">
+            <input id="dataSel" name="dataSel" type="date" class="form-control col-md-2" />
+        </div>
+    </div>
+    <div class="col-2">
+        <button type="submit" class="btn btn-success"><i class="bi bi-cash-coin"></i> Fechamento de Caixa</button>
+    </div>
     </form>
 
 <table class="table table-striped">

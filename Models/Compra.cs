@@ -14,9 +14,12 @@ namespace ProjetoFinal.Models
         public int ProdutoID { get; set; }
         public Produto Produto { get; set; }
 
+        [Display(Name = "Comprado")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yy HH:mm}")]
         public DateTime DataCompra { get; set; }
 
         [Required]
+        [Display(Name = "Pagamento")]
         public string? FormaPagamento { get; set; }
 
     }

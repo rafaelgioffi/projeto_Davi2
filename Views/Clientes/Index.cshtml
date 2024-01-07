@@ -12,17 +12,19 @@
 <table class="table table-striped">
     <thead class="table-dark">
         <tr>
-            <th>
+            <th class="col-md-2">
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
-            <th>
+            <th class="col-md-2">
                 @Html.DisplayNameFor(model => model.CPF)
             </th>
-            <th colspan="2">
+            <th class="col-md-2" @* colspan="2" *@>
                 Local
-            </th>            
-
-            <th>Ações</th>
+            </th>
+            <th class="col-md-1">
+                @Html.DisplayNameFor(model => model.Idade)
+            </th>
+            <th class="col-md-3">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -36,10 +38,19 @@
                     @* @Html.DisplayFor(modelItem => item.CPF) *@
                     @item.MostrarCPF()
                 </td>
-                <td colspan="2">
+                <td @* colspan="2" *@>
                     @* @Html.DisplayFor(modelItem => item.CPF) *@
                     @item.Cidade / @item.Estado
                 </td>
+                    @if (item.Idade != null)
+                    {
+                <td>
+                    @item.Idade anos
+                </td>
+                    }
+                else {
+                    <td></td>
+                }
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ClienteID" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.ClienteID" class="btn btn-info"><i class="bi bi-info-circle-fill"></i> Info</a> |

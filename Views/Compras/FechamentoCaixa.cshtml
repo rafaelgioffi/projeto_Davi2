@@ -28,13 +28,17 @@
             {
                 <tr>
                     <td class="text-center">@v.CompraID</td>
-                    <td class="text-center">@v.DataCompra</td>
+                    <td class="text-center">@v.DataCompra.ToShortDateString()</td>
                     <td class="text-center">@v.FormaPagamento</td>
-                    <td class="text-center">@v.Produto.PrecoUnit</td>
+                    <td class="text-center">@v.Produto.PrecoUnit.ToString("C")</td>
                 </tr>
             }
         </tbody>
     </table>
+            <hr />
+            <div class="align-right">
+            <h5 class="text-right text-black">Total em vendas: @Model.Sum(p => p.Produto.PrecoUnit).ToString("C")</h5>
+            </div>
 }
 else
 {
