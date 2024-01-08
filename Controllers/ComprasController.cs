@@ -29,9 +29,12 @@ namespace ProjetoFinal.Controllers
         [HttpPost]
         public IActionResult FechamentoCaixa(DateTime dataSel)
         {
+            ViewData["dataSel"] = dataSel;
+
             var fechamento = _contexto.Compras
                 .Where(c => c.DataCompra.Date == dataSel.Date)
                 .Include(p => p.Produto)
+                .Include(cl => cl.Cliente)
                 .ToList();
             return View(fechamento);
         }
